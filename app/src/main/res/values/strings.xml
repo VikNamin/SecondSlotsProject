@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">SecondSlotsProject</string>
     <string name="startButtonText">Start!</string>
+    <string name="scoreText">Score: </string>
+    <string name="startWheelButtonText">Spin!</string>
 </resources>

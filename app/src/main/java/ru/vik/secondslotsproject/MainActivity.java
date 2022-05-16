@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try{
                     String content = getContent(url);
-                    if (content != ""){
+                    if (content == ""){
                         webView.post(new Runnable() {
                             public void run() {
                                 webView.loadUrl(content);
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickStart(View view) {
-        Intent intent = new Intent(this, SlotActivity.class);
+        Intent intent = new Intent(this, WheelActivity.class);
         startActivity(intent);
     }
 

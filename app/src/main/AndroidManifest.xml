@@ -12,11 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SecondSlotsProject">
         <activity
-            android:name=".SlotActivity"
+            android:name=".WheelActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
