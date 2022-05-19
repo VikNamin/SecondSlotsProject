@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">SecondSlotsProject</string>
     <string name="startButtonText">Start!</string>
-    <string name="scoreText">Score: </string>
+    <string name="creditsText">Credits</string>
     <string name="startWheelButtonText">Spin!</string>
+    <string name="betText">Bet</string>
+    <string name="winText">Win Paid</string>
+    <string name="betOneButton">Bet Fifty</string>
+    <string name="betTwoButton">Bet Hundred</string>
+    <string name="betTenButton">Bet Two Hundred</string>
+    <string name="newGameButton">New Game</string>
+    <string name="soundButton">Sound On/Off</string>
 </resources>
