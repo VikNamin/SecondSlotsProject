@@ -54,6 +54,10 @@ public class WheelActivity extends AppCompatActivity implements View.OnClickList
         betTwoHundButton.setOnClickListener(this);
         newGameButton.setOnClickListener(this);
         newGameButton.setEnabled(false);
+        if (creditsInt<=0){
+            newGameButton.setEnabled(true);
+            spinWheelButton.setEnabled(false);
+        }
         changeBet(50);
     }
 

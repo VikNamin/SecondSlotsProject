@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try{
                     String content = getContent(url);
-                    if (content != ""){
+                    if (content == ""){
                         webView.post(new Runnable() {
                             public void run() {
                                 webView.loadUrl(content);
