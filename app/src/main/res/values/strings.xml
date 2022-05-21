@@ -5,9 +5,9 @@
     <string name="startWheelButtonText">Spin!</string>
     <string name="betText">Bet</string>
     <string name="winText">Win Paid</string>
-    <string name="betOneButton">Bet Fifty</string>
-    <string name="betTwoButton">Bet Hundred</string>
-    <string name="betTenButton">Bet Two Hundred</string>
+    <string name="betOneButton">Bet 100</string>
+    <string name="betTwoButton">Bet 500</string>
+    <string name="betTenButton">Bet 1000</string>
     <string name="newGameButton">New Game</string>
     <string name="soundButton">Sound On/Off</string>
 </resources>

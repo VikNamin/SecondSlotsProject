@@ -14,7 +14,7 @@ public class WheelActivity extends AppCompatActivity implements View.OnClickList
     private TextView creditsViewText, betViewText, winViewText;
     public ImageView image1, image2, image3;
     public Wheel wheel1, wheel2, wheel3;
-    private Button spinWheelButton, betFiftyButton, betHundredButton, betTwoHundButton, newGameButton;
+    private Button spinWheelButton, bet100Button, bet500Button, bet1000Button, newGameButton;
     private boolean isStarted = false;
     public static int creditsInt = 1000, betInt = 50, winInt = betInt*10;
     public static int wheel1ind = 4, wheel2ind = 4, wheel3ind = 4;
@@ -37,9 +37,9 @@ public class WheelActivity extends AppCompatActivity implements View.OnClickList
         image3.setImageResource(wheel3.drawables[wheel3ind]);
 
         spinWheelButton = findViewById(R.id.spinWheelButton);
-        betFiftyButton = findViewById(R.id.betFiftyButton);
-        betHundredButton = findViewById(R.id.betHundredButton);
-        betTwoHundButton = findViewById(R.id.betTwoHundButton);
+        bet100Button = findViewById(R.id.bet100Button);
+        bet500Button = findViewById(R.id.bet500Button);
+        bet1000Button = findViewById(R.id.bet1000Button);
         newGameButton = findViewById(R.id.newGameButton);
         creditsViewText = findViewById(R.id.creditsViewText);
         creditsViewText.setText(Integer.toString(creditsInt));
@@ -49,9 +49,9 @@ public class WheelActivity extends AppCompatActivity implements View.OnClickList
         winViewText.setText(Integer.toString(winInt));
 
         spinWheelButton.setOnClickListener(this);
-        betFiftyButton.setOnClickListener(this);
-        betHundredButton.setOnClickListener(this);
-        betTwoHundButton.setOnClickListener(this);
+        bet100Button.setOnClickListener(this);
+        bet500Button.setOnClickListener(this);
+        bet1000Button.setOnClickListener(this);
         newGameButton.setOnClickListener(this);
         newGameButton.setEnabled(false);
         if (creditsInt<=0){
@@ -64,13 +64,13 @@ public class WheelActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case (R.id.betFiftyButton):
-                changeBet(50);
-                break;
-            case (R.id.betHundredButton):
+            case (R.id.bet100Button):
                 changeBet(100);
                 break;
-            case (R.id.betTwoHundButton):
+            case (R.id.bet500Button):
+                changeBet(500);
+                break;
+            case (R.id.bet1000Button):
                 changeBet(1000);
                 break;
             case (R.id.newGameButton):
@@ -100,11 +100,6 @@ public class WheelActivity extends AppCompatActivity implements View.OnClickList
                         creditsInt += winInt;
                         creditsViewText.setText(Integer.toString(creditsInt));
                     }
-//                    else if (wheel1.currentIndex == wheel2.currentIndex || wheel2.currentIndex == wheel3.currentIndex
-//                            || wheel1.currentIndex == wheel3.currentIndex) {
-//                        creditsInt+=winInt/5;
-//                        creditsViewText.setText(Integer.toString(creditsInt));
-//                    }
                     else {
                         creditsInt -= betInt;
                         creditsViewText.setText(Integer.toString(creditsInt));

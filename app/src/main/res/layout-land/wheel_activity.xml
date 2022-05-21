@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="499dp"
+        android:layout_height="527dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
@@ -146,17 +146,17 @@
                 android:showDividers="middle">
 
                 <Button
-                    android:id="@+id/betFiftyButton"
+                    android:id="@+id/bet100Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
+                    android:layout_weight="1"
                     android:text="@string/betOneButton" />
 
                 <Button
-                    android:id="@+id/betHundredButton"
+                    android:id="@+id/bet500Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
+                    android:layout_weight="1"
                     android:text="@string/betTwoButton" />
             </LinearLayout>
         </LinearLayout>
@@ -176,10 +176,10 @@
                 android:showDividers="middle">
 
                 <Button
-                    android:id="@+id/betTwoHundButton"
+                    android:id="@+id/bet1000Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
+                    android:layout_weight="1"
                     android:text="@string/betTenButton" />
 
             </LinearLayout>
@@ -203,7 +203,7 @@
                     android:id="@+id/newGameButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
+                    android:layout_weight="1"
                     android:text="@string/newGameButton" />
 
             </LinearLayout>
@@ -227,7 +227,7 @@
                     android:id="@+id/spinWheelButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
+                    android:layout_weight="1"
                     android:text="@string/startWheelButtonText" />
             </LinearLayout>
         </LinearLayout>

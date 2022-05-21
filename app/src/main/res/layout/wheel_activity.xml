@@ -144,14 +144,14 @@
                 android:showDividers="middle">
 
                 <Button
-                    android:id="@+id/betFiftyButton"
+                    android:id="@+id/bet100Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/betOneButton" />
 
                 <Button
-                    android:id="@+id/betHundredButton"
+                    android:id="@+id/bet500Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -173,7 +173,7 @@
                 android:showDividers="middle">
 
                 <Button
-                    android:id="@+id/betTwoHundButton"
+                    android:id="@+id/bet1000Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
