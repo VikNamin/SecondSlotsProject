@@ -10,6 +10,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private NotificationManager notificationManager;
     private static final int NOTIFY_ID = 101;
     private static final String CHANNEL_ID = "ENTER_MAIN_PUSH";
+    SharedPreferences sPref;
+    final String SAVED_TEXT = "saved_text";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,9 +93,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String getContent(String path) throws IOException {
+        if (!savedContentIsEmpty()){
+            return loadContent();
+        }
         BufferedReader reader=null;
         InputStream stream = null;
         HttpsURLConnection connection = null;
+        String content = "";
         try {
             URL url=new URL(path);
             connection =(HttpsURLConnection)url.openConnection();
@@ -106,7 +113,9 @@ public class MainActivity extends AppCompatActivity {
             while ((line=reader.readLine()) != null) {
                 buf.append(line).append("\n");
             }
-            return(buf.toString());
+            content = buf.toString();
+            checkAndSaveContent(content);
+            return(loadContent());
         }
         finally {
             if (reader != null) {
@@ -119,6 +128,22 @@ public class MainActivity extends AppCompatActivity {
                 connection.disconnect();
             }
         }
+    }
+
+    private void checkAndSaveContent(String content){
+        sPref = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor ed = sPref.edit();
+        ed.putString(SAVED_TEXT, content);
+        ed.commit();
+    }
+
+    private String loadContent(){
+        sPref = getPreferences(MODE_PRIVATE);
+        return sPref.getString(SAVED_TEXT, "");
+    }
+
+    private boolean savedContentIsEmpty(){
+        return loadContent().equals("");
     }
 
     private void notificationCreate(){
