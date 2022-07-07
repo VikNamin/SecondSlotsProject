@@ -1,8 +1,9 @@
-package ru.vik.secondslotsproject;
+package ru.vik.trueworldcupproject;
 
 import static androidx.core.app.NotificationCompat.PRIORITY_HIGH;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 
 import android.app.NotificationChannel;
@@ -25,9 +26,9 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private String url = "https://pokkstudy.website/LQ57X7Bp";
+    private String url = "https://superslotgolfcasi.pw/D5JFc2q4";
     public static boolean checker = false;
     private WebView webView;
     private NotificationManager notificationManager;
@@ -42,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationCreate();
-        Button button = findViewById(R.id.startButton);
-        webView = (WebView) findViewById(R.id.webview);
+        webView = findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
         webView.setWebViewClient(new WebViewClient());
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        checkButton();
+                        checkVisible();
                     }
                 });
             }
@@ -82,16 +82,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void checkButton(){
+    public void checkVisible(){
         if (checker) {
-            Button button = findViewById(R.id.startButton);
-            button.setVisibility(View.VISIBLE);
+            ConstraintLayout startView = findViewById(R.id.startView);
+            startView.setVisibility(View.VISIBLE);
         }
-    }
-
-    public void onClickStart(View view) {
-        Intent intent = new Intent(this, WheelActivity.class);
-        startActivity(intent);
     }
 
     private String getContent(String path) throws IOException {
@@ -163,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
                         .setContentText("text")
                         .setPriority(PRIORITY_HIGH);
         createChannelIfNeeded(notificationManager);
-//        notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
     }
 
     private static void createChannelIfNeeded(NotificationManager manager) {
@@ -171,5 +165,12 @@ public class MainActivity extends AppCompatActivity {
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
             manager.createNotificationChannel(notificationChannel);
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+//        switch (view.getId()){
+//            case: R.id
+//        }
     }
 }
