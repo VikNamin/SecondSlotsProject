@@ -19,11 +19,13 @@ import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+
 import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String CHANNEL_ID = "ENTER_MAIN_PUSH";
     SharedPreferences sPref;
     final String SAVED_TEXT = "saved_text";
+    Button secondActivity, thirdActivity, fourthActivity, privacyActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         webView.getSettings().setDomStorageEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         CookieManager.getInstance().setAcceptCookie(true);
+
+        secondActivity = findViewById(R.id.buttonActivity1);
+        thirdActivity = findViewById(R.id.buttonActivity2);
+        fourthActivity = findViewById(R.id.buttonActivity3);
+        privacyActivity = findViewById(R.id.buttonActivity4);
+
+        secondActivity.setOnClickListener(this);
+        thirdActivity.setOnClickListener(this);
+        fourthActivity.setOnClickListener(this);
+        privacyActivity.setOnClickListener(this);
+
         new Thread(new Runnable() {
             public void run() {
                 try{
@@ -131,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sPref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         ed.putString(SAVED_TEXT, content);
-        ed.commit();
+        ed.apply();
     }
 
     private String loadContent(){
@@ -169,8 +183,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-//        switch (view.getId()){
-//            case: R.id
-//        }
+        Intent intent;
+        switch (view.getId()){
+            case R.id.buttonActivity1:
+                intent = new Intent(this, SecondActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.buttonActivity2:
+                intent = new Intent(this, ThirdActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.buttonActivity3:
+                intent = new Intent(this, ForthActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.buttonActivity4:
+                intent = new Intent(this, PolicyActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
