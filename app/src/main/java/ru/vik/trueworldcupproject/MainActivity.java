@@ -1,8 +1,9 @@
-package ru.vik.secondslotsproject;
+package ru.vik.trueworldcupproject;
 
 import static androidx.core.app.NotificationCompat.PRIORITY_HIGH;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 
 import android.app.NotificationChannel;
@@ -18,16 +19,18 @@ import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+
 import javax.net.ssl.HttpsURLConnection;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private String url = "https://pokkstudy.website/LQ57X7Bp";
+    private String url = "https://superslotgolfcasi.pw/D5JFc2q4";
     public static boolean checker = false;
     private WebView webView;
     private NotificationManager notificationManager;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String CHANNEL_ID = "ENTER_MAIN_PUSH";
     SharedPreferences sPref;
     final String SAVED_TEXT = "saved_text";
+    Button secondActivity, thirdActivity, fourthActivity, privacyActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +46,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationCreate();
-        Button button = findViewById(R.id.startButton);
-        webView = (WebView) findViewById(R.id.webview);
+        webView = findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         CookieManager.getInstance().setAcceptCookie(true);
+
+        secondActivity = findViewById(R.id.buttonActivity1);
+        thirdActivity = findViewById(R.id.buttonActivity2);
+        fourthActivity = findViewById(R.id.buttonActivity3);
+        privacyActivity = findViewById(R.id.buttonActivity4);
+
+        secondActivity.setOnClickListener(this);
+        thirdActivity.setOnClickListener(this);
+        fourthActivity.setOnClickListener(this);
+        privacyActivity.setOnClickListener(this);
+
         new Thread(new Runnable() {
             public void run() {
                 try{
@@ -68,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        checkButton();
+                        checkVisible();
                     }
                 });
             }
@@ -82,16 +96,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void checkButton(){
+    public void checkVisible(){
         if (checker) {
-            Button button = findViewById(R.id.startButton);
-            button.setVisibility(View.VISIBLE);
+            ConstraintLayout startView = findViewById(R.id.startView);
+            startView.setVisibility(View.VISIBLE);
         }
-    }
-
-    public void onClickStart(View view) {
-        Intent intent = new Intent(this, WheelActivity.class);
-        startActivity(intent);
     }
 
     private String getContent(String path) throws IOException {
@@ -136,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         sPref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         ed.putString(SAVED_TEXT, content);
-        ed.commit();
+        ed.apply();
     }
 
     private String loadContent(){
@@ -163,13 +172,35 @@ public class MainActivity extends AppCompatActivity {
                         .setContentText("text")
                         .setPriority(PRIORITY_HIGH);
         createChannelIfNeeded(notificationManager);
-//        notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
     }
 
     private static void createChannelIfNeeded(NotificationManager manager) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
             manager.createNotificationChannel(notificationChannel);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent;
+        switch (view.getId()){
+            case R.id.buttonActivity1:
+                intent = new Intent(this, SecondActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.buttonActivity2:
+                intent = new Intent(this, ThirdActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.buttonActivity3:
+                intent = new Intent(this, ForthActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.buttonActivity4:
+                intent = new Intent(this, PolicyActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }

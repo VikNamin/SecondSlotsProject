@@ -1,11 +1,11 @@
-package ru.vik.secondslotsproject;
+package ru.vik.trueworldcupproject;
 
 import android.app.Application;
 
 import com.onesignal.OneSignal;
 
 public class MainApplication extends Application {
-    private static final String ONESIGNAL_APP_ID = "c4147517-1adb-4ddf-b8f3-abc85f4825b6";
+    private static final String ONESIGNAL_APP_ID = "38fa521f-8c05-428a-99e9-9e333ac300c4";
 
     @Override
     public void onCreate() {

@@ -1,4 +1,4 @@
-package ru.vik.secondslotsproject;
+package ru.vik.trueworldcupproject;
 
 import android.content.Context;
 
