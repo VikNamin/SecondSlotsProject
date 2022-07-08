@@ -27,7 +27,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder>{
     @NonNull
     @Override
     public GroupAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.recylerview_item, parent, false);
+        View view = inflater.inflate(R.layout.recylerview_item_groups, parent, false);
         return new ViewHolder(view);
     }
 
@@ -48,7 +48,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.ViewHolder>{
         final TextView firstTitle, secondTitle, firstText, secondText;
         ViewHolder(View view){
             super(view);
-            firstTitle = view.findViewById(R.id.firstGroupTitleText);
+            firstTitle = view.findViewById(R.id.betTeamTextView);
             secondTitle = view.findViewById(R.id.secondGroupTitleText);
             firstText = view.findViewById(R.id.firstGroupText);
             secondText = view.findViewById(R.id.secondGroupText);
